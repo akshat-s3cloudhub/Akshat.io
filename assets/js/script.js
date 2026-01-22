@@ -157,3 +157,63 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// ===================================================
+// CONTACT FORM → POPUP (INSTANT) + WHATSAPP + GOOGLE SHEET
+// ===================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.querySelector("[data-form]");
+  const popup = document.getElementById("thankYouPopup");
+
+  if (!form || !popup) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop redirect
+
+    const formData = new FormData(form);
+
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    // -----------------------------
+    // SHOW POPUP INSTANTLY ✅
+    // -----------------------------
+    popup.classList.add("active");
+
+    // -----------------------------
+    // OPEN WHATSAPP (NOT BLOCKED)
+    // -----------------------------
+    const whatsappText = encodeURIComponent(
+      `Hello Akshat,
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`
+    );
+
+    window.open(
+      `https://wa.me/917666769104?text=${whatsappText}`,
+      "_blank"
+    );
+
+    // -----------------------------
+    // SEND TO GOOGLE SHEET (BACKGROUND)
+    // -----------------------------
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    }).catch(() => {});
+
+    form.reset();
+  });
+
+});
+
+// CLOSE POPUP
+function closeThankYou() {
+  document.getElementById("thankYouPopup").classList.remove("active");
+}

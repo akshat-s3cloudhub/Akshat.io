@@ -1152,7 +1152,28 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form
+            class="form"
+            data-form
+            method="POST"
+            action="https://script.google.com/macros/s/AKfycbyKYjtFTsRc0tyatD8gx1cW80wDrFAn2U3-DsAMyBj5xg3NehRo1NKlmcff99-I7tTZ/exec">
+
+            <div class="input-wrapper">
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+
+          <!-- <form action="#" class="form" data-form>
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
@@ -1167,7 +1188,7 @@
               <span>Send Message</span>
             </button>
 
-          </form>
+          </form> -->
 
         </section>
 
@@ -1177,6 +1198,18 @@
 
   </main>
 
+
+
+<!-- THANK YOU POPUP -->
+<div id="thankYouPopup" class="thankyou-popup">
+  <div class="thankyou-box">
+    <h3>Thank you for reaching out! 😊</h3>
+    <p>
+      I’ve received your message and will get back to you as soon as possible.
+    </p>
+    <button onclick="closeThankYou()">Close</button>
+  </div>
+</div>
 
 
 
